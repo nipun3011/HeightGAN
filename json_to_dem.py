@@ -5,22 +5,23 @@ from geotiff_to_png import geotiff_to_png
 
 regions = [
     "mountains",
-    "valley",
-    "plain",
+    "valleys",
+    "plains",
     "hills",
-    "plateau",
+    "plateaus",
     "highlands",
-    "cliff",
+    "cliffs",
 ]
 # OpenTopography API endpoint and key
+key = os.getenv("API_KEY")
 url = "https://portal.opentopography.org/API/globaldem"
-api_key = "e6556ce105c1f1c7539972fa2149a3e1"
+api_key = key
 
 
 # Loop through each region and download the DEM
 for class_name in regions:
     print(class_name)
-    with open(f"{class_name}.geojson") as file:
+    with open(f"Kaggle Output/{class_name}.geojson") as file:
         geojs = geojson.load(file)
     output_folder = f"./{class_name}/"
     print("output folder variable created")
